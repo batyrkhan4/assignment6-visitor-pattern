@@ -1,4 +1,9 @@
 package visitors;
 
-public class FileSystemVisitor {
+import elements.Directory;
+import elements.File;
+
+public interface FileSystemVisitor {
+    void visitFile(File file);
+    void visitDirectory(Directory directory);
 }
