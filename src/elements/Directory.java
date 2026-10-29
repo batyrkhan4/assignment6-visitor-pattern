@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Directory implements FileSystemElement {
     private final String name;
-    private final List<FileSystemElement> children = new ArrayList<>();
+    private final List<FileSystemElement> children = new CopyOnWriteArrayList<>();
 
     public Directory(String name) {
         if (name == null || name.isBlank()) {

@@ -2,8 +2,6 @@ package elements;
 
 import visitors.FileSystemVisitor;
 
-import java.nio.file.FileVisitor;
-
 public class File implements FileSystemElement {
     private final String name;
     private final long size;

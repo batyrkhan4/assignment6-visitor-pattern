@@ -4,13 +4,14 @@ import elements.Directory;
 import elements.File;
 
 import javax.swing.*;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class SizeCalculatorVisitor implements FileSystemVisitor {
-    private long totalSize = 0;
+    private final AtomicLong totalSize = new AtomicLong(0);
 
     @Override
     public void visitFile(File file) {
-        totalSize += file.getSize();
+        totalSize.addAndGet(file.getSize()); // Not thread-safe!
     }
 
     @Override
@@ -21,6 +22,6 @@ public class SizeCalculatorVisitor implements FileSystemVisitor {
     }
 
     public long getTotalSize() {
-        return totalSize;
+        return totalSize.get();
     }
 }
